@@ -1,0 +1,89 @@
+:root {
+  --bg-color: navajowhite;
+  --main-color: deeppink;
+  --secondary-color: steelblue;
+  --text-neutral: dimgrey;
+
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: var(--text-neutral);
+}
+
+body {
+  background-color: var(--bg-color);
+  height: 100dvh;
+  margin: 0;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+h1 {
+  margin: 40px 0 20px;
+  color: var(--main-color);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.club-name {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat {
+  height: 2.5rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 992px;
+  padding-bottom: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.button {
+  width: fit-content;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.result-box {
+  width: calc(100% - 30px);
+  padding: 15px;
+  background-color: #fff5e6;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 0.5rem;
+}
+
+.random-image {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .container {
+    flex-direction: column;
+    justify-content: start;
+  }
+}

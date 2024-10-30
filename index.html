@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Olympics</title>
     <link rel="icon" href="./assets/js-48.png" />
-    <!-- <link rel=" stylesheet" href="./src/main.css"> -->
+    <link rel=" stylesheet" href="./src/main.css" />
     <script type="module" src="./src/main.js"></script>
   </head>
 
   <body>
-    <h1>Club de Chicas Programadoras</h1>
-    <p>Girl Power</p>
-    <button id="getButton">Obtener imagen</button>
     <div>
-      Imagen:
-      <img id="imageContainer" src="" alt="Imagen aleatoria" />
+      <h1>Club de Chicas Programadoras</h1>
+      <p class="club-name">
+        <img class="cat" src="./assets/cat-100.png" alt="Cat" />Girl Power!
+      </p>
     </div>
-    <button id="postButton">Enviar imagen</button>
-    <div>
-      Objetos detectados:
-      <ul id="list"></ul>
+    <div class="container">
+      <div class="box">
+        <button id="getButton" class="button">Obtener imagen</button>
+        <div class="result-box">
+          Imagen:
+          <img
+            id="imageContainer"
+            class="random-image"
+            src=""
+            alt="Imagen aleatoria"
+          />
+        </div>
+      </div>
+      <div class="box">
+        <button id="postButton" class="button">Enviar imagen</button>
+        <div class="result-box">
+          Objetos detectados:
+          <ul id="list"></ul>
+        </div>
+      </div>
     </div>
   </body>
 </html>
