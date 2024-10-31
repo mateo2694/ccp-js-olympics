@@ -2,9 +2,22 @@ console.log("Hello GIRL POWER!");
 
 // Console log
 // * ¡Muestra tu propio mensaje en la consola!
+console.log("Mateo estuvo aquí!");
 
 // Variables y tipos de datos
 // * ¡EXPLOREMOS!
+const none1 = null;
+const none2 = undefined;
+
+const name = "Mateo";
+const age = 30;
+const male = true;
+
+const arr = ["Santiago", "Luci", "Mateo", 30, true, false];
+console.log(arr[3]);
+
+const obj = { aguapanela: "bebida dulce", boligrafo: "objeto para escribir" };
+console.log(obj.boligrafo);
 
 // Funciones
 // * Escribe una función que reciba dos números y devuelva su suma
