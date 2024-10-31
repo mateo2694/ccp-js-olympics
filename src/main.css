@@ -46,7 +46,6 @@ h1 {
   padding-bottom: 40px;
   display: flex;
   gap: 40px;
-  justify-content: center;
 }
 
 .box {
@@ -68,9 +67,11 @@ h1 {
 }
 
 .result-box {
-  width: calc(100% - 30px);
+  box-sizing: border-box;
+  width: 100%;
   padding: 15px;
   background-color: #fff5e6;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -84,6 +85,5 @@ h1 {
 @media (max-width: 576px) {
   .container {
     flex-direction: column;
-    justify-content: start;
   }
 }
