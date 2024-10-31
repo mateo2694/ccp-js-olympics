@@ -36,7 +36,10 @@ postButton.addEventListener("click", async function () {
   console.log("results", results);
 
   // if (response.ok === true) {
-  //   const labels = results.map((result) => result.label);
+  //   const labels = results
+  //     .filter((result) => Number(result.confidence) > 0.5)
+  //     .map((result) => result.label);
+
   //   const labelSet = new Set(labels);
   //   let listItems = "";
 
