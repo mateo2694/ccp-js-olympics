@@ -1,29 +1,35 @@
-function sofi(a, b, c) {
-  // código aquí
+function sofi(num1, num2, num3) {
+  const suma = num1 + num2 + num3;
+  const resultado = suma * 2;
+  return resultado;
 }
 
 function caroL(a, b, c) {
-  // código aquí
+  res1 = a - b;
+  res2 = res1 * c;
+  return res2;
 }
 
 function caroJ(a, b, c) {
-  // código aquí
+  const lit1 = b + a;
+  const lit2 = lit1 * c;
+  return lit2;
 }
 
 function manu(a, b, c) {
-  // código aquí
+  const miResultado = a + b + c;
+  return miResultado;
 }
 
 function luci(a, b, c) {
-  // código aquí
+  const resultado = a + b + c;
+  return resultado;
 }
 
-function eli(a, b, c) {
-  // código aquí
-}
-
-function salo(a, b, c) {
-  // código aquí
+function eli(x, y, z) {
+  const n1 = x + y;
+  const n2 = n1 * z;
+  return n2;
 }
 
 const lista1 = [
@@ -91,11 +97,10 @@ function superNombre(nombre, a, b, c) {
   const num4 = manu(a, b, c);
   const num5 = luci(a, b, c);
   const num6 = eli(a, b, c);
-  const num7 = salo(a, b, c);
 
   const index1 = num1 + num2;
   const index2 = num3 + num4;
-  const index3 = num5 + num6 + num7;
+  const index3 = num5 + num6;
 
   return (
     "Cuando nadie está viendo, " +
@@ -109,4 +114,4 @@ function superNombre(nombre, a, b, c) {
   );
 }
 
-// console.log(superNombre("", 0, 0, 0));
+console.log(superNombre("Mateo", 5, 77.77, 12345));
