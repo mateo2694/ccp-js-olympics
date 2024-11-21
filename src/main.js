@@ -13,15 +13,24 @@ let image;
 
 // Petición para obtener una imagen aleatoria
 getButton.addEventListener("click", async function () {
-  const response = await fetch();
+  const response = await fetch(
+    "https://api.api-ninjas.com/v1/randomimage?category=technology",
+    {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "NiOXaLSBpxi3ITUcwBBWNMDbYmg7pXjaxNMF9EnJ",
+        Accept: "image/jpg",
+      },
+    }
+  );
 
   console.log("GET", response);
 
-  // if (response.ok === true) {
-  //   image = await response.blob();
-  //   const imageUrl = URL.createObjectURL(image);
-  //   imageContainer.src = imageUrl;
-  // }
+  if (response.ok === true) {
+    image = await response.blob();
+    const imageUrl = URL.createObjectURL(image);
+    imageContainer.src = imageUrl;
+  }
 });
 
 // Petición para detectar objetos en la imagen
@@ -29,24 +38,33 @@ postButton.addEventListener("click", async function () {
   const formData = new FormData();
   formData.append("image", image);
 
-  const response = await fetch();
+  const response = await fetch(
+    "https://api.api-ninjas.com/v1/objectdetection",
+    {
+      method: "POST",
+      headers: {
+        "X-Api-Key": "NiOXaLSBpxi3ITUcwBBWNMDbYmg7pXjaxNMF9EnJ",
+      },
+      body: formData,
+    }
+  );
 
   console.log("POST", response);
   const results = await response.json();
   console.log("results", results);
 
-  // if (response.ok === true) {
-  //   const labels = results
-  //     .filter((result) => Number(result.confidence) > 0.5)
-  //     .map((result) => result.label);
+  if (response.ok === true) {
+    const labels = results
+      .filter((result) => Number(result.confidence) > 0.5)
+      .map((result) => result.label);
 
-  //   const labelSet = new Set(labels);
-  //   let listItems = "";
+    const labelSet = new Set(labels);
+    let listItems = "";
 
-  //   labelSet.forEach(function (label) {
-  //     listItems = listItems + `<li>${label}</li>`;
-  //   });
+    labelSet.forEach(function (label) {
+      listItems = listItems + `<li>${label}</li>`;
+    });
 
-  //   list.innerHTML = listItems;
-  // }
+    list.innerHTML = listItems;
+  }
 });
