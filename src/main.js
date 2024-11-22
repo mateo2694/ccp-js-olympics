@@ -11,6 +11,9 @@ const list = document.getElementById("list");
 // Variable para almacenar la imagen
 let image;
 
+// Variable para almacenar la API key
+const apiKey = "";
+
 // Petición para obtener una imagen aleatoria
 getButton.addEventListener("click", async function () {
   const response = await fetch(
@@ -18,7 +21,7 @@ getButton.addEventListener("click", async function () {
     {
       method: "GET",
       headers: {
-        "X-Api-Key": "NiOXaLSBpxi3ITUcwBBWNMDbYmg7pXjaxNMF9EnJ",
+        "X-Api-Key": apiKey,
         Accept: "image/jpg",
       },
     }
@@ -43,7 +46,7 @@ postButton.addEventListener("click", async function () {
     {
       method: "POST",
       headers: {
-        "X-Api-Key": "NiOXaLSBpxi3ITUcwBBWNMDbYmg7pXjaxNMF9EnJ",
+        "X-Api-Key": apiKey,
       },
       body: formData,
     }
