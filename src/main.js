@@ -1,3 +1,6 @@
+import { getImage } from "./modules/getImage.js";
+import { postImage } from "./modules/postImage.js";
+
 // Encontrar botones
 const getButton = document.getElementById("getButton");
 const postButton = document.getElementById("postButton");
@@ -16,18 +19,7 @@ const apiKey = "";
 
 // Petición para obtener una imagen aleatoria
 getButton.addEventListener("click", async function () {
-  const response = await fetch(
-    "https://api.api-ninjas.com/v1/randomimage?category=technology",
-    {
-      method: "GET",
-      headers: {
-        "X-Api-Key": apiKey,
-        Accept: "image/jpg",
-      },
-    }
-  );
-
-  console.log("GET", response);
+  const response = await getImage(apiKey);
 
   if (response.ok === true) {
     image = await response.blob();
@@ -38,21 +30,8 @@ getButton.addEventListener("click", async function () {
 
 // Petición para detectar objetos en la imagen
 postButton.addEventListener("click", async function () {
-  const formData = new FormData();
-  formData.append("image", image);
+  const response = await postImage(apiKey, image);
 
-  const response = await fetch(
-    "https://api.api-ninjas.com/v1/objectdetection",
-    {
-      method: "POST",
-      headers: {
-        "X-Api-Key": apiKey,
-      },
-      body: formData,
-    }
-  );
-
-  console.log("POST", response);
   const results = await response.json();
   console.log("results", results);
 
