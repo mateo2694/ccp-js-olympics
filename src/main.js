@@ -88,5 +88,9 @@ form.addEventListener("submit", async function (e) {
     imageContainer.setAttribute("width", width);
     imageContainer.setAttribute("height", height);
     imageContainer.src = imageUrl;
+  } else {
+    imageContainer.removeAttribute("width");
+    imageContainer.removeAttribute("height");
+    imageContainer.src = "";
   }
 });
