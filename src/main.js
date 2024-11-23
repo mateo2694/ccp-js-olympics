@@ -64,12 +64,12 @@ form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const response = await fetch(
-    "https://api.api-ninjas.com/v1/randomimage?width=" +
+    "https://api.api-ninjas.com/v1/randomimage?category=" +
+      category +
+      "&width=" +
       width +
       "&height=" +
-      height +
-      "&category=" +
-      category,
+      height,
     {
       method: "GET",
       headers: {
