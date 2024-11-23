@@ -18,7 +18,23 @@
     </div>
     <div class="container">
       <div class="box">
-        <button id="getButton" class="button">Obtener imagen</button>
+        <form>
+          <label>
+            Categoría:
+            <input id="categoryInput" type="text" />
+          </label>
+          <label>
+            <div>Ancho: <span id="width"></span></div>
+            <input id="widthInput" type="range" min="0" />
+          </label>
+          <label>
+            <div>Alto: <span id="height"></span></div>
+            <input id="heightInput" type="range" min="0" />
+          </label>
+          <button id="getButton" type="submit" class="button">
+            Obtener imagen
+          </button>
+        </form>
         <div class="result-box">
           Imagen:
           <img
@@ -27,13 +43,6 @@
             src=""
             alt="Imagen aleatoria"
           />
-        </div>
-      </div>
-      <div class="box">
-        <button id="postButton" class="button">Enviar imagen</button>
-        <div class="result-box">
-          Objetos detectados:
-          <ul id="list"></ul>
         </div>
       </div>
     </div>

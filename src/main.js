@@ -1,52 +1,92 @@
-import { getImage } from "./modules/getImage.js";
-import { postImage } from "./modules/postImage.js";
-
-// Encontrar botones
-const getButton = document.getElementById("getButton");
-const postButton = document.getElementById("postButton");
+// Encontrar formulario
+const form = document.querySelector("form");
 
 // Encontrar contenedor para la imagen
 const imageContainer = document.getElementById("imageContainer");
 
-// Encontrar la lista de resultados
-const list = document.getElementById("list");
+// Encontrar entradadas de categoría, ancho y alto
+const categoryInput = document.getElementById("categoryInput");
+const widthInput = document.getElementById("widthInput");
+const heightInput = document.getElementById("heightInput");
 
-// Variable para almacenar la imagen
-let image;
+// Encontrar nodos para valores de ancho y alto
+const widthNode = document.getElementById("width");
+const heightNode = document.getElementById("height");
 
-// Variable para almacenar la API key
-const apiKey = "";
+// Variables para almacenar categoría, ancho y alto
+let category = "";
+let width = 0;
+let height = 0;
 
-// Petición para obtener una imagen aleatoria
-getButton.addEventListener("click", async function () {
-  const response = await getImage(apiKey);
+// Función para inicializar parámetros de ancho y alto
+function initWidthAndHeight() {
+  const step = 50;
+  const resultBoxWidth = document.querySelector(".result-box").offsetWidth;
+  const imgMaxWidth = Math.floor((resultBoxWidth - 30) / step) * step;
 
-  if (response.ok === true) {
-    image = await response.blob();
-    const imageUrl = URL.createObjectURL(image);
-    imageContainer.src = imageUrl;
-  }
+  width = imgMaxWidth;
+  height = imgMaxWidth;
+
+  widthInput.setAttribute("step", step);
+  heightInput.setAttribute("step", step);
+  widthInput.setAttribute("max", imgMaxWidth);
+  heightInput.setAttribute("max", imgMaxWidth);
+  widthInput.setAttribute("value", width);
+  heightInput.setAttribute("value", height);
+
+  widthNode.textContent = `${width}px`;
+  heightNode.textContent = `${height}px`;
+}
+
+// Inicializar ancho y alto
+initWidthAndHeight();
+window.addEventListener("resize", initWidthAndHeight);
+
+// Guardar la categoría cuando el usuario escriba algo
+categoryInput.addEventListener("change", function (event) {
+  category = event.target.value;
 });
 
-// Petición para detectar objetos en la imagen
-postButton.addEventListener("click", async function () {
-  const response = await postImage(apiKey, image);
+// Guardar el ancho cuando el usuario modifique el valor
+widthInput.addEventListener("input", function (event) {
+  width = event.target.value;
+  widthNode.textContent = `${width}px`;
+});
 
-  const results = await response.json();
-  console.log("results", results);
+// Guardar el alto cuando el usuario modifique el valor
+heightInput.addEventListener("input", function (event) {
+  height = event.target.value;
+  heightNode.textContent = `${height}px`;
+});
+
+// Obtener una imagen aleatoria al enviar el formulario
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const response = await fetch(
+    "https://api.api-ninjas.com/v1/randomimage?width=" +
+      width +
+      "&height=" +
+      height +
+      "&category=" +
+      category,
+    {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "J920VqpHKnCyOTpsa98Fz24VFcii0EJdRG3UlzJH",
+        Accept: "image/jpg",
+      },
+    }
+  );
+
+  console.log("response.ok =", response.ok);
 
   if (response.ok === true) {
-    const labels = results
-      .filter((result) => Number(result.confidence) > 0.5)
-      .map((result) => result.label);
+    const image = await response.blob();
+    const imageUrl = URL.createObjectURL(image);
 
-    const labelSet = new Set(labels);
-    let listItems = "";
-
-    labelSet.forEach(function (label) {
-      listItems = listItems + `<li>${label}</li>`;
-    });
-
-    list.innerHTML = listItems;
+    imageContainer.setAttribute("width", width);
+    imageContainer.setAttribute("height", height);
+    imageContainer.src = imageUrl;
   }
 });
