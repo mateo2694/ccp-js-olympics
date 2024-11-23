@@ -63,21 +63,14 @@ heightInput.addEventListener("input", function (event) {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const response = await fetch(
-    "https://api.api-ninjas.com/v1/randomimage?category=" +
-      category +
-      "&width=" +
-      width +
-      "&height=" +
-      height,
-    {
-      method: "GET",
-      headers: {
-        "X-Api-Key": "J920VqpHKnCyOTpsa98Fz24VFcii0EJdRG3UlzJH",
-        Accept: "image/jpg",
-      },
-    }
-  );
+  const options = {
+    headers: {
+      "X-Api-Key": "",
+      Accept: "",
+    },
+  };
+
+  const response = await fetch();
 
   console.log("response.ok =", response.ok);
 
